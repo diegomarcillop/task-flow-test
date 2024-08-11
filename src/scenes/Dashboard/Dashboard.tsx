@@ -8,11 +8,15 @@ import { task as TaskActions } from '../../services/Task/TaskActions'
 export const Dashboard = () => {
   const dispatch = useDispatch()
   const { success } = useSelector((state: any) => state.task)
+  const { isAuth } = useSelector((state: any) => state.auth)
 
   const [showAddModal, setShowAddModal] = useState(false)
 
   useEffect(() => {
     dispatch(TaskActions.getAll())
+  }, [isAuth, success.create, success.update])
+
+  useEffect(() => {
     if (success.create) {
       dispatch(TaskActions.setSuccess('create', false))
     }

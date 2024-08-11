@@ -4,6 +4,8 @@ export const { task } = createActions({
   TASK: {
     CREATE: params => params,
 
+    UPDATE: params => params,
+
     GET_ALL: () => ({}),
 
     SET_STATE: (keyState, newValue) => ({ keyState, newValue }),

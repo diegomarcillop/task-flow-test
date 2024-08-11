@@ -18,6 +18,8 @@ const TaskReducer = handleActions(
     TASK: {
       CREATE: state => ({ ...state }),
 
+      UPDATE: state => ({ ...state }),
+
       GET_ALL: state => ({ ...state }),
 
       SET_STATE: (state, { payload: { keyState, newValue } }) => ({

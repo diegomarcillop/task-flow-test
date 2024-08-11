@@ -1,6 +1,6 @@
 import { all, put, putResolve, select, takeLatest } from 'redux-saga/effects'
 
-import { addDoc, collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { task as TaskActions } from './TaskActions'
 
@@ -22,6 +22,22 @@ function* create({ payload }) {
   yield put(TaskActions.setSuccess('create', true))
 }
 
+function* update({ payload }) {
+  yield put(TaskActions.setLoading('update', true))
+  yield put(TaskActions.setSuccess('update', false))
+
+  const { user } = yield select(state => state.auth)
+
+  const values = {
+    ...payload
+  }
+
+  yield updateDoc(doc(db, `tasks`, values.id), values)
+
+  yield put(TaskActions.setLoading('update', false))
+  yield put(TaskActions.setSuccess('update', true))
+}
+
 function* getAll() {
   yield putResolve(TaskActions.setLoading('getAll', true))
 
@@ -38,6 +54,7 @@ function* getAll() {
 function* actionWatcher() {
   yield takeLatest(TaskActions.getAll, getAll)
   yield takeLatest(TaskActions.create, create)
+  yield takeLatest(TaskActions.update, update)
 }
 
 export default function* TaskSaga() {
