@@ -18,6 +18,7 @@ function* create({ payload }) {
 
   yield addDoc(collection(db, 'tasks'), values)
 
+  yield put(TaskActions.getAll())
   yield put(TaskActions.setLoading('create', false))
   yield put(TaskActions.setSuccess('create', true))
 }
@@ -26,14 +27,9 @@ function* update({ payload }) {
   yield put(TaskActions.setLoading('update', true))
   yield put(TaskActions.setSuccess('update', false))
 
-  const { user } = yield select(state => state.auth)
+  yield updateDoc(doc(db, `tasks`, payload.id), payload)
 
-  const values = {
-    ...payload
-  }
-
-  yield updateDoc(doc(db, `tasks`, values.id), values)
-
+  yield put(TaskActions.getAll())
   yield put(TaskActions.setLoading('update', false))
   yield put(TaskActions.setSuccess('update', true))
 }
@@ -45,7 +41,7 @@ function* getAll() {
 
   let tasks = yield getDocs(collection(db, 'tasks'))
   tasks = tasks.docs?.map(doc => ({ ...doc.data(), id: doc.id }))
-  tasks = tasks.filter(e => e.userId === user.id)
+  tasks = tasks.filter(e => e.userId === user.id && e.status !== 'DELETE')
 
   yield put(TaskActions.setState('tasks', tasks || []))
   yield put(TaskActions.setLoading('getAll', false))

@@ -15,7 +15,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     dispatch(TaskActions.getAll())
-  }, [isAuth, success.create, success.update])
+  }, [isAuth])
 
   useEffect(() => {
     if (success.create) {

@@ -44,9 +44,9 @@ export const TaskModalForm: React.FC<Props> = ({ visible, onClose, type, values 
     }
   }, [visible])
 
-  const onSubmit = async () => {
+  const onSubmit = async ({ status }: any) => {
     if (isEdit) {
-      dispatch(TaskActions.update(form))
+      dispatch(TaskActions.update({ ...form, status }))
       return
     }
     dispatch(TaskActions.create(form))
@@ -97,7 +97,7 @@ export const TaskModalForm: React.FC<Props> = ({ visible, onClose, type, values 
                       id="switch-3"
                       type="checkbox"
                       className="peer sr-only"
-                      onClick={() => handleForm({ value: "DONE", "key" : "state"})}
+                      onClick={() => handleForm({ value: 'DONE', key: 'state' })}
                     />
                     <label htmlFor="switch-3" className="hidden"></label>
                     <div className="peer h-4 w-11 rounded border bg-slate-200 after:absolute after:-top-1 after:left-0 after:h-6 after:w-6 after:rounded-md after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-green-300 peer-checked:after:translate-x-full peer-focus:ring-green-300"></div>
@@ -107,12 +107,24 @@ export const TaskModalForm: React.FC<Props> = ({ visible, onClose, type, values 
               <input className="font-light border p-4 rounded-xl h-12" placeholder="Tags" />
             </div>
             <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              {isEdit && (
+                <button
+                  type="button"
+                  className={`w-full rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto ${
+                    !isValid && 'opacity-35'
+                  }`}
+                  onClick={() => onSubmit({ status: 'DELETE' })}
+                  disabled={!isValid || loading.create || loading.update}
+                >
+                  x
+                </button>
+              )}
               <button
                 type="button"
-                className={`w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto ${
+                className={`w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 ${
                   !isValid && 'opacity-35'
                 }`}
-                onClick={onSubmit}
+                onClick={() => onSubmit({ status: 'ACTIVE' })}
                 disabled={!isValid || loading.create || loading.update}
               >
                 {isEdit ? 'Update' : 'Add'}
