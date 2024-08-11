@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
 export const Signup = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col container mx-auto px-8 py-8 relative h-screen font-poppins">
       <div className="flex flex-col justify-center items-center gap-2">
@@ -15,7 +19,10 @@ export const Signup = () => {
         <input className="font-light border p-4 rounded-xl h-12" placeholder="Repeat password" />
         <button className="font-bold bg-fuchsia-300 rounded-xl h-12">Register</button>
         <p className="font-normal self-center">
-          Do you have an account? <button className="font-bold">LogIn</button>
+          Do you have an account?{' '}
+          <button className="font-bold" onClick={() => navigate('/')}>
+            LogIn
+          </button>
         </p>
       </div>
     </div>

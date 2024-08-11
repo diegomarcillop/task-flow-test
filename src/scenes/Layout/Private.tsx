@@ -1,7 +1,12 @@
-import React from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { Dashboard } from '../Dashboard/Dashboard'
 
 export const Private = () => {
   return (
-    <div>Private</div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </Router>
   )
 }

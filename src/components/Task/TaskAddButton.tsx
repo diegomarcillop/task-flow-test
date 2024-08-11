@@ -1,9 +1,18 @@
-import React from 'react'
+interface Props {
+  onClick: any
+}
 
-export const TaskAddButton = () => {
+export const TaskAddButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <button className='bg-fuchsia-300	 rounded-2xl w-20 h-20'>
-      <span className='material-icons text-6xl'>add</span>
+    <button
+      data-modal-target="default-modal"
+      data-modal-toggle="default-modal"
+      className="bg-fuchsia-300	 rounded-2xl w-16 h-16"
+      type="button"
+    >
+      <span className="material-icons text-4xl" onClick={onClick}>
+        add
+      </span>
     </button>
   )
 }

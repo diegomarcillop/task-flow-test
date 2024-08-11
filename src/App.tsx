@@ -1,7 +1,5 @@
-import { Dashboard } from './scenes/Dashboard/Dashboard'
-import { LogIn } from './scenes/LogIn/LogIn'
-import { Signup } from './scenes/Singup/Signup'
+import { Private } from './scenes/Layout/Private'
 
 export const App = () => {
-  return <Signup />
+  return <Private />
 }

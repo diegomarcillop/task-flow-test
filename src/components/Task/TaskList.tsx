@@ -28,7 +28,7 @@ const tasks = [
   {
     id: '4',
     name: 'Enviar correo a equipo',
-    tags: ['Familia'],
+    tags: ['Trabajo', 'Vida'],
     date: '2024-08-13',
     state: 'pending', // 'pending', 'in-progress', 'completed'
     description: 'Enviar un correo electrónico a todo el equipo con la agenda de la reunión.'

@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { TaskAddButton } from '../../components/Task/TaskAddButton'
 import { TaskList } from '../../components/Task/TaskList'
+import { TaskModalForm } from '../../components/Task/TaskModalForm'
 
 export const Dashboard = () => {
+  const [showAddModal, setShowAddModal] = useState(false)
+
   return (
     <div className="container mx-auto px-8 py-8 relative h-screen">
       <div>
@@ -15,9 +19,10 @@ export const Dashboard = () => {
         </div>
         <TaskList />
         <div className="absolute bottom-5 right-5">
-          <TaskAddButton />
+          <TaskAddButton onClick={() => setShowAddModal(!showAddModal)} />
         </div>
       </div>
+      <TaskModalForm visible={showAddModal} onClose={() => setShowAddModal(false)} />
     </div>
   )
 }
