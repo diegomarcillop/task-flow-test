@@ -18,11 +18,16 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
   return (
     <div className="bg-white rounded-lg p-4 mb-4 flex flex-col font-poppins border border-slate-500 cursor-pointer">
       <div className="tags flex gap-1 mb-1">
-        {task?.tags?.map((tag, index) => (
-          <button key={index} className={`font-normal text-slate-800 rounded-2xl bg-orange-300 px-4 text-sm h-6 ${getColor()}`}>
-            {tag}
-          </button>
-        ))}
+        {task.tags?.length &&
+          task.tags.length > 0 &&
+          task?.tags?.map((tag, index) => (
+            <button
+              key={index}
+              className={`font-normal text-slate-800 rounded-2xl bg-orange-300 px-4 text-sm h-6 ${getColor()}`}
+            >
+              {tag}
+            </button>
+          ))}
       </div>
       <h3 className={`font-semibold  text-sm`}>{task.name}</h3>
       <p className={`font-light text-sm`}>{truncateText(task.description, 40)}</p>
