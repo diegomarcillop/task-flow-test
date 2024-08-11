@@ -36,7 +36,7 @@ export const TaskList = () => {
 
   const handleSelectedTask = (values: any) => {
     setSelectedTask(values)
-    setShowEdit(!showEdit)
+    setShowEdit(true)
   }
 
   return (

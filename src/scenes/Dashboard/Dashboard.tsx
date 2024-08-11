@@ -4,6 +4,7 @@ import { TaskAddButton } from '../../components/Task/TaskAddButton'
 import { TaskList } from '../../components/Task/TaskList'
 import { TaskModalForm } from '../../components/Task/TaskModalForm'
 import { task as TaskActions } from '../../services/Task/TaskActions'
+import { TaskStates } from '../../components/Task/TaskStates'
 
 export const Dashboard = () => {
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ export const Dashboard = () => {
             <h1 className="font-poppins font-bold text-3xl">Task List</h1>
           </div>
         </div>
+        <TaskStates />
         <TaskList />
         <div className="absolute bottom-5 right-5">
           <TaskAddButton onClick={() => setShowAddModal(!showAddModal)} />
