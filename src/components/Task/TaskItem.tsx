@@ -18,8 +18,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
   return (
     <div className="bg-white rounded-lg p-4 mb-4 flex flex-col font-poppins border border-slate-500 cursor-pointer">
       <div className="tags flex gap-1 mb-1">
-        {task.tags?.length &&
-          task.tags.length > 0 &&
+        {task.tags && task.tags.length > 0 &&
           task?.tags?.map((tag, index) => (
             <button
               key={index}

@@ -21,6 +21,14 @@ export const TaskList = () => {
     )
   }
 
+  if (tasks.length === 0) {
+    return (
+      <div className="font-poppins w-full flex justify-center items-center">
+        <p className='text-lg text-slate-500'>Oops, you don't have any homework, add one! </p>
+      </div>
+    )
+  }
+
   return (
     <div className="grid grid-cols-4 gap-4">
       {tasks.map((task: Task, index: number) => (
