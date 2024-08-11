@@ -1,0 +1,44 @@
+// TODO: Install and implement this rules
+
+{
+  "env": {
+    "es2021": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "@react-native-community",
+    "plugin:react/recommended",
+    "plugin:jest-react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": ["react"],
+  "ignorePatters": ["common/*"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "rules": {
+    "global-require": "off",
+    "react/display-name": "off",
+    "import/no-unresolved": "off",
+    "class-methods-use-this": "off",
+    "react/react-in-jsx-scope": "off",
+    "lines-between-class-members": "off",
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/no-unstable-nested-components": "off",
+
+    "semi": ["error", "never"],
+    "comma-dangle": ["error", "never"],
+    "import/extensions": [0, "ignorePackages"],
+    "import/no-extraneous-dependencies": [0, "packageDir"],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+  }
+}
