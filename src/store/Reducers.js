@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
+import AuthReducer from '../services/Auth/AuthReducer'
 import TaskReducer from '../services/Task/TaskReducer'
 
 const appReducers = combineReducers({
-  task: TaskReducer
+  task: TaskReducer,
+  auth: AuthReducer
 })
 
 const rootReducers = () => {
