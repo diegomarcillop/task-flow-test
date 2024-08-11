@@ -5,17 +5,9 @@
     "es2021": true,
     "browser": true
   },
-  "extends": [
-    "airbnb",
-    "prettier",
-    "eslint:recommended",
-    "@react-native-community",
-    "plugin:react/recommended",
-    "plugin:jest-react/recommended",
-    "plugin:react-hooks/recommended"
-  ],
+  "extends": [],
   "plugins": ["react"],
-  "ignorePatters": ["common/*"],
+  //"ignorePatters": ["common/*"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
